@@ -1,0 +1,49 @@
+{
+	"manifest_version": 2.0,
+	"id": "tophostsmonzphere",
+	"type": "widget",
+	"name": "Top hosts Monzphere",
+	"namespace": "TopHostsMonzphere",
+	"version": "2.0",
+	"author": "Monzphere",
+	"description": "Displays top N hosts that have the highest or the lowest item value (for example, CPU load) with an option to add progress-bar visualizations, customize report columns, and sort by clicking column headers.",
+	"url": "monzphere.com",
+	"widget": {
+		"js_class": "CWidgetTopHostsMonzphere",
+		"size": {
+			"width": 12,
+			"height": 5
+		},
+		"refresh_rate": 60,
+		"in": {
+			"hostids": {
+				"type": "_hostids"
+			},
+			"groupids": {
+				"type": "_hostgroupids"
+			}
+		},
+		"out": [
+			{
+				"type": "_hostid"
+			},
+			{
+				"type": "_hostids"
+			}
+		]
+	},
+	"actions": {
+		"widget.tophostsmonzphere.view": {
+			"class": "WidgetViewMonzphere"
+		},
+		"widget.tophostsmonzphere.column.edit": {
+			"class": "ColumnEditMonzphere",
+			"view": "column.edit",
+			"layout": "layout.json"
+		}
+	},
+	"assets": {
+		"js": ["class.widgetmonzphere.js"],
+		"css": ["widget.monzphere.css"]
+	}
+}
