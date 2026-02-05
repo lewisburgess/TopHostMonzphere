@@ -52,11 +52,7 @@ window.tophosts_column_edit_form = new class {
 		colorPalette.setThemeColors(thresholds_colors);
 
 		// Initialize thresholds table.
-		this.#thresholds_table.addEventListener('afteradd.dynamicRows', e => {
-			const $colorpicker = $('tr.form_row:last input[name$="[color]"]', e.target);
-			$colorpicker.colorpicker({appendTo: $colorpicker.closest('.input-color-picker')});
-			this.#updateForm();
-		});
+		this.#thresholds_table.addEventListener('afteradd.dynamicRows', () => this.#updateForm());
 		this.#thresholds_table.addEventListener('afterremove.dynamicRows', () => this.#updateForm());
 
 		$(this.#thresholds_table).dynamicRows({
@@ -70,16 +66,8 @@ window.tophosts_column_edit_form = new class {
 			}
 		});
 
-		$('tr.form_row input[name$="[color]"]', this.#thresholds_table).each((i, colorpicker) => {
-			$(colorpicker).colorpicker({appendTo: $(colorpicker).closest('.input-color-picker')});
-		});
-
 		// Initialize highlights table.
-		this.#highlights_table.addEventListener('afteradd.dynamicRows', e => {
-			const $colorpicker = $('tr.form_row:last input[name$="[color]"]', e.target);
-			$colorpicker.colorpicker({appendTo: $colorpicker.closest('.input-color-picker')});
-			this.#updateForm();
-		});
+		this.#highlights_table.addEventListener('afteradd.dynamicRows', () => this.#updateForm());
 		this.#highlights_table.addEventListener('afterremove.dynamicRows', () => this.#updateForm());
 
 		$(this.#highlights_table).dynamicRows({
@@ -91,10 +79,6 @@ window.tophosts_column_edit_form = new class {
 					row_data.color = this.#getNextColor();
 				}
 			}
-		});
-
-		$('tr.form_row input[name$="[color]"]', this.#highlights_table).each((i, colorpicker) => {
-			$(colorpicker).colorpicker({appendTo: $(colorpicker).closest('.input-color-picker')});
 		});
 
 		// Trim values on change.
