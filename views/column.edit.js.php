@@ -169,8 +169,8 @@ window.tophosts_column_edit_form = new class {
 			element.style.display = (data_item_value && display_sparkline) ? '' : 'none';
 		}
 
-		// Base color field.
-		const base_color_visible = !data_host_name && (!data_item_value || !display_value_as_numeric || display_as_is);
+		// Base color field - visible for all except host name and sparkline.
+		const base_color_visible = !data_host_name && !(data_item_value && display_sparkline);
 		for (const element of this.#form.querySelectorAll('.js-base-color-row')) {
 			element.style.display = base_color_visible ? '' : 'none';
 		}
